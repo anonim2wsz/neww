@@ -284,9 +284,9 @@ body.dark-mode .cloud-smoke {
 }
 .cat-img {
   position: absolute;
-  top: 228px;
+  top: 210px;
   left: 50%;
-  transform: translate(-50%, -90%); /* geser pas atas border */
+  transform: translate(-50%, -115%); /* geser pas atas border */
   width: 100px;
   z-index: 10;
 }
