@@ -286,7 +286,7 @@ body.dark-mode .cloud-smoke {
   position: absolute;
   top: 228px;
   left: 50%;
-  transform: translate(-50%, -100%); /* geser pas atas border */
+  transform: translate(-50%, -110%); /* geser pas atas border */
   width: 100px;
   z-index: 10;
 }
