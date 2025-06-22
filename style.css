@@ -283,7 +283,7 @@ body.dark-mode .cloud-smoke {
   100% { transform: translateY(300px) translateX(300px) rotate(45deg); opacity: 0; }
 }
 .cat-img {
-  position: absolute;
+  position:absolute;
   top: 228px;
   left: 50%;
   transform: translate(-50%, -115%); /* geser pas atas border */
