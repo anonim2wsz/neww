@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>List Seru</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon-transparent-96x96.png">
+</head>
+<body>
+ <button class="toggle-mode" onclick="toggleMode()">🌓 Mode</button>
+ <script>
+  // Cek preferensi user saat halaman dibuka
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedMode = localStorage.getItem('theme');
+    if (savedMode === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
+  });
+
+  function toggleMode() {
+    document.body.classList.toggle('dark-mode');
+    const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+    localStorage.setItem('theme', mode);
+  }
+</script>
+  <div class="container">
+    <h2>List Seru Hari Ini</h2>
+    <p id="randomResult"></p>
+    <button onclick="acakList()">Acak Aktivitas</button>
+    <ul id="activityList">
+     
+  <li><a href="https://ipusnas.id" target="_blank">baca buku 📚</a></li>
+  <li><a href="https://code.visualstudio.com/" target="_blank">Coding random project 💻</a></li>
+  <li><a href="https://www.strava.com/" target="_blank">long run 🏃‍♂️</a></li>
+  <li><a href="https://coffeepods.com/" target="_blank">Coba minuman baru ☕</a></li>
+  <li><a href="https://hobbylark.com/" target="_blank">Cari hobi baru 🤔</a></li>
+    </ul>
+    <button onclick="location.href='index.html'">Balik ke awal</button>
+  </div>
+
+  <script>
+    function acakList() {
+      const activities = Array.from(document.querySelectorAll("#activityList li"));
+      const randomIndex = Math.floor(Math.random() * activities.length);
+      const result = activities[randomIndex].textContent;
+      document.getElementById("randomResult").textContent = `Coba deh: ${result}`;
+    }
+  </script>
+  <!-- Awan 3 -->
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="cloud cloud-3"></div>
+
+<!-- LOVE PARTICLE -->
+<script>
+  document.addEventListener("click", function(e) {
+    if (document.body.classList.contains("dark-mode")) return;
+
+    const heart = document.createElement("div");
+    heart.className = "love-particle";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1000);
+  });
+</script>
+<div class="stars" id="star-container"></div>
+
+<script>
+  function generateStars() {
+    const container = document.getElementById("star-container");
+    container.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * -100 + "vh";
+      star.style.animationDuration = (2 + Math.random() * 4) + "s";
+      star.style.animationDelay = Math.random() + "s";
+      container.appendChild(star);
+    }
+  }
+
+  const savedMode = localStorage.getItem('theme');
+  if (savedMode === 'dark') generateStars();
+
+  function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+    const mode = document.body.classList.contains("dark-mode") ? 'dark' : 'light';
+    localStorage.setItem("theme", mode);
+
+    if (mode === 'dark') {
+      generateStars();
+    } else {
+      document.getElementById("star-container").innerHTML = "";
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabut Woiii</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon-transparent-96x96.png">
+</head>
+<body>
+  <!-- Tombol Dark Mode -->
+  <button class="toggle-mode" onclick="toggleMode()">🌓 Mode</button>
+
+  <!-- ☁️ Awan (Light Mode Only) -->
+  <!-- Awan bergerak -->
+<div class="cloud cloud-1"></div>
+<div class="cloud cloud-2"></div>
+<div class="cloud cloud-3"></div>
+<div class="cloud cloud-4"></div>
+<div class="cloud cloud-5"></div>
+<div class="cloud cloud-6"></div>
+
+  <!-- 🐱 Kucing (hanya saat light mode) -->
+  <img src="kucing_transparan.png" alt="Kucing" class="cat-img">
+
+  <!-- Kontainer Utama -->
+  <div class="container">
+    <h1>Halo Jogi!</h1>
+    <p>bingung mau ngapain?</p>
+    <button onclick="location.href='page2.html'">coba ini yukk!!</button>
+  </div>
+
+  <!-- Tanggal -->
+  <p id="today"></p>
+  <script>
+    const d = new Date();
+    document.getElementById("today").innerText = d.toDateString();
+  </script>
+
+  <!-- Jam -->
+  <p id="clock" style="margin-top:10px; font-style:italic; color:gray;"></p>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      document.getElementById("clock").textContent = now.toLocaleTimeString();
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+
+  <!-- Mobil (cuma muncul saat dark mode) -->
+  <img src="mobil.png" alt="Mobil" class="corner-img">
+  <div class="cloud-smoke"></div>
+
+  <!-- Script Dark Mode -->
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedMode = localStorage.getItem('theme');
+      if (savedMode === 'dark') {
+        document.body.classList.add('dark-mode');
+      }
+    });
+
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+      const mode = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+      localStorage.setItem('theme', mode);
+    }
+</script>
+<!-- LOVE PARTICLE -->
+<script>
+  document.addEventListener("click", function(e) {
+    // Cek dulu, hanya muncul saat mode light
+    if (document.body.classList.contains("dark-mode")) return;
+
+    const heart = document.createElement("div");
+    heart.className = "love-particle";
+    heart.style.left = e.clientX + "px";
+    heart.style.top = e.clientY + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 1000);
+  });
+</script>
+<div class="stars" id="star-container"></div>
+
+<script>
+  function generateStars() {
+    const container = document.getElementById("star-container");
+    container.innerHTML = '';
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement("div");
+      star.className = "star";
+      star.style.left = Math.random() * 100 + "vw";
+      star.style.top = Math.random() * -100 + "vh";
+      star.style.animationDuration = (2 + Math.random() * 4) + "s";
+      star.style.animationDelay = Math.random() + "s";
+      container.appendChild(star);
+    }
+  }
+
+  const savedMode = localStorage.getItem('theme');
+  if (savedMode === 'dark') generateStars();
+
+  function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+    const mode = document.body.classList.contains("dark-mode") ? 'dark' : 'light';
+    localStorage.setItem("theme", mode);
+
+    if (mode === 'dark') {
+      generateStars();
+    } else {
+      document.getElementById("star-container").innerHTML = "";
+    }
+  }
+</script>
+
+</body>
+</html>
